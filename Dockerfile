@@ -5,7 +5,6 @@ ENV CMAKE_VERSION "3.10.2.4988404"
 ENV ANDROID_NDK_HOME "${ANDROID_HOME}/ndk"
 ENV PATH="$PATH:${ANDROID_NDK_HOME}:${ANDROID_HOME}/cmake/${CMAKE_VERSION}/bin"
 
-RUN apt-get -q update
-RUN apt-get install -qqy --no-install-recommends g++
+RUN [ -d "${ANDROID_HOME}/patcher" ] && rm "${ANDROID_HOME}/patcher"
 RUN echo y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "ndk;${ANDROID_NDK_VERSION}"
 RUN echo y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "cmake;${CMAKE_VERSION}"
