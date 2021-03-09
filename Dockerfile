@@ -5,6 +5,6 @@ ENV CMAKE_VERSION "3.10.2.4988404"
 ENV ANDROID_NDK_HOME "${ANDROID_HOME}/ndk"
 ENV PATH="$PATH:${ANDROID_NDK_HOME}:${ANDROID_HOME}/cmake/${CMAKE_VERSION}/bin"
 
-RUN [ -d "${ANDROID_HOME}/patcher" ] && rm -rf "${ANDROID_HOME}/patcher"
-RUN echo y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "ndk;${ANDROID_NDK_VERSION}"
-RUN echo y | ${ANDROID_HOME}/bin/sdkmanager --sdk_root=${ANDROID_HOME} "cmake;${CMAKE_VERSION}"
+RUN echo yes | sdkmanager --licenses
+RUN sdkmanager "ndk;${ANDROID_NDK_VERSION}"
+RUN sdkmanager "cmake;${CMAKE_VERSION}"
