@@ -6,7 +6,7 @@ ENV LLDB_VERSION "3.1"
 ENV PATH "$PATH:${ANDROID_SDK_ROOT}/ndk/${ANDROID_NDK_VERSION}:${ANDROID_SDK_ROOT}/cmake/${CMAKE_VERSION}"
 
 RUN echo ${PATH}
-RUN echo y | sdkmanager --install "ndk;${ANDROID_NDK_VERSION}"
-RUN echo y | sdkmanager --install "cmake;${CMAKE_VERSION}"
-RUN echo y | sdkmanager --install "lldb;${LLDB_VERSION}}"
+RUN echo y | sdkmanager --install "ndk;${ANDROID_NDK_VERSION}" \
+    && echo y | sdkmanager --install "cmake;${CMAKE_VERSION}" \
+    && echo y | sdkmanager --update
 
